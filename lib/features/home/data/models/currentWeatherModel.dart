@@ -1,0 +1,100 @@
+class CurrentWeather {
+     final double  lon, lat, temp,  temp_min, temp_max,   speed;
+     final dynamic feels_like;
+    final int weather_id, id,deg, all,visibility,  pressure, humidity,sys_id,  dt, type, sunrise, sunset, timezone, cod;
+    final String main, description,icon, base, country, name;
+
+    CurrentWeather({
+        required this.weather_id,
+        required this.sys_id,
+        required this.lon,
+        required this.lat,
+        required this.temp,
+        required this.feels_like,
+        required this.temp_min,
+        required this.temp_max,
+        required this.pressure,
+        required this.humidity,
+        required this.id,
+        required this.main,
+        required this.description,
+        required this.icon,
+        required this.base,
+        required this.country,
+        required this.name,
+        required this.visibility,
+        required this.speed,
+        required this.deg,
+        required this.all,
+        required this.dt,
+        required this.type,
+        required this.sunrise,
+        required this.sunset,
+        required this.timezone,
+        required this.cod,
+    });
+
+    factory CurrentWeather.fromJson(Map<String, dynamic> json) {
+        return CurrentWeather(
+            weather_id: json['weather'][0]['id'],
+            sys_id: json['sys']['id'],
+            lon: json['coord']['lon'],
+            lat: json['coord']['lat'],
+            temp: json['main']['temp'],
+            feels_like: json['main']['feels_like'],
+            temp_min: json['main']['temp_min'],
+            temp_max: json['main']['temp_max'],
+            pressure: json['main']['pressure'],
+            humidity: json['main']['humidity'],
+            id: json['id'],
+            main: json['weather'][0]['main'],
+            description: json['weather'][0]['description'],
+            icon: json['weather'][0]['icon'],
+            base: json['base'],
+            country: json['sys']['country'],
+            name: json['name'],
+            visibility: json['visibility'],
+            speed: json['wind']['speed'],
+            deg: json['wind']['deg'],
+            all: json['clouds']['all'],
+            dt: json['dt'],
+            type: json['sys']['type'],
+            sunrise: json['sys']['sunrise'],
+            sunset: json['sys']['sunset'],
+            timezone: json['timezone'],
+            cod: json['cod'],
+        );
+    }
+
+    Map<String, dynamic> toJson() {
+        return {
+            'weather_id': weather_id,
+            'sys_id': sys_id,
+            'lon': lon,
+            'lat': lat,
+            'temp': temp,
+            'feels_like': feels_like,
+            'temp_min': temp_min,
+            'temp_max': temp_max,
+            'pressure': pressure,
+            'humidity': humidity,
+            'id': id,
+            'main': main,
+            'description': description,
+            'icon': icon,
+            'base': base,
+            'country': country,
+            'name': name,
+            'visibility': visibility,
+            'speed': speed,
+            'deg': deg,
+            'all': all,
+            'dt': dt,
+            'type': type,
+            'sunrise': sunrise,
+            'sunset': sunset,
+            'timezone': timezone,
+            'cod': cod,
+        };
+    }
+}
